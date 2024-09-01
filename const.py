@@ -25,7 +25,7 @@ activation_thresholds = {
   "Warrior": 2
 }
 
-min_trait_array = list(activation_thresholds.values())
+min_trait_array = np.array(list(activation_thresholds.values()))
 str_trait_array = list(activation_thresholds.keys())
 
 all_champions = [
@@ -91,11 +91,11 @@ all_champions = [
   {"name": "Zoe", "cost": 1, "traits": ["Portal", "Witchcraft", "Scholar"]}
 ]
 
-def build_champ_matrix(min_cost):
+def build_champ_matrix(max_cost):
     matrix = []
     champ_names = []
     for champ in all_champions:
-        if champ["cost"] <= min_cost:
+        if champ["cost"] <= max_cost:
             champ_names.append(champ["name"])
             array = np.array([0] * len(min_trait_array))
             for trait in champ["traits"]:
